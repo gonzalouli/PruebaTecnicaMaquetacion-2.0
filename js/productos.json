@@ -1,0 +1,50 @@
+[   
+    {
+    "id": 1,
+    "nombre": "Niguiri Salmón",
+    "precio": 1.25,
+    "contenido": "Salmón y arroz Sushi Meshi",
+    "descripcion": "Sabroso niguiri de arroz con salmón de Noruega. Exquisito para los paladares finos",
+    "img": "niguirisalmon.jpg"
+    },
+    {
+    "id": 2,
+    "nombre": "Niguiri Atún",
+    "precio": 1.50,
+    "contenido": "Atun y arroz Sushi Meshi ",
+    "descripcion": "Nuestro niguiri más exclusivo. Atún de almadrava sobre una cama de arroz Sushi Meshi",
+    "img": "niguiriatun.jpg"
+    },
+    {
+    "id": 3,
+    "nombre": "Takoyaki",
+    "precio": 7,
+    "contenido": "Pulpo, harina, laminas de bonito y nuestra salsa especial",
+    "descripcion": "Sabroso niguiri de arroz con salmón de noruega. Exquisito para los paladares finos",
+    "img": "takoyaki.jpg"
+    },
+    {    
+    "id": 4,
+    "nombre": "Ramen de la casa",
+    "precio": 9,
+    "contenido": "Fideos, tofu, lomo de cerdo, alga nori, wakame, huevo, setas y naturo",
+    "descripcion": "Exquisito bol de ramen de carne y algas. Ideal para las noches más frías",
+    "img": "ramendelacasa.jpg"
+    },
+    {
+    "id": 5,
+    "nombre": "Sopa de miso",
+    "precio": 5,
+    "contenido": "Tofu, caldo dashi, alga wakame, puerro, miso y fideos (opcional)",
+    "descripcion": "Para los vegetarianos la sopa de miso es la mejor opción para introducirse en el mundo oriental. Podemos agregar fideos a gusto del cliente",
+    "img": "sopamiso.jpg"
+    },
+    {
+    "id": 6,
+    "nombre": "Sashimi variado",
+    "precio": 20,
+    "contenido": "Atún, salmón, pulpo y pez mantequilla",
+    "descripcion": "Plato variado de sashimi. El pescado crudo junto al wasabi hace sentir todo el sabor en tu paladar. Exquisito y exótico",
+    "img": "sashimi.jpg"
+    }
+]

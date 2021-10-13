@@ -1,0 +1,105 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url("../img/fondo.jpeg");
+    background-size: cover;
+    background-repeat: repeat;
+    background-size: contain;
+    margin: 0;
+    height: 100vh;
+}
+
+@media(max-width: 830px){
+    body{
+        background-image: url("../img/movilformat.jpg");
+        font-size: 80%;
+    }
+    
+    .image{
+        width: 25%;
+    }
+}
+
+#name-portada{
+    font-weight: bolder !important;
+}
+
+
+.navbar-brand, .navbar{
+    font-size: 300% ;
+    font-stretch: wider;
+    font-family: 'Lucida Sans';
+}
+
+.navbar-brand{
+    font-size: 100% !important;
+}
+
+
+.japan{
+
+    font-size: 400%;
+    font-weight: bold;
+}
+
+.traduccion{
+    background-color: rgba(255,255,255,0.6);
+    font-weight: bold;
+    font-size: 300%;
+    width: 100vh;
+    border-radius: 4mm;
+    display:inline-block;
+}
+
+#trad{
+    background-color: rgba(255,255,255,0.6);
+    border-radius: 2mm;    
+    display:inline-block;
+    font-weight: bold;
+}
+
+
+.desc{
+    background-color: rgba(255,255,255,0.6);
+    width:50%;
+    border-radius: 2mm;
+    font-weight: bold;
+}
+
+.descripcion{
+    font-size: 120% ;
+}
+
+.nav-item:hover{
+    font-weight: bold;
+    background-color: rgba(255, 197, 91, 0.6);
+    border-radius: 3mm;
+}
+
+
+#linkedin:hover{
+    width: 17%;
+    height: 17%;
+}
+
+.card{
+    width: 18rem;
+    position:center;
+    
+}
+
+#personal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-footer{
+    position: absolute;
+    width: 100%;
+    background-color: white !important;
+
+}
+
+#tarjeta{
+    border: 0px
+}
