@@ -44,11 +44,7 @@ class UI{
         form.appendChild(grid)
     }
 
-    
-
-
 }
-
 
 
 function allowDrop(ev) {
@@ -59,6 +55,7 @@ function drop(ev){
     ev.preventDefault();
     const data = ev.dataTransfer.getData("producto");
     ev.target.appendChild(document.getElementById(data));
+    const carrito = document.querySelector()
 }
 
 function drag(ev){
@@ -66,6 +63,7 @@ function drag(ev){
     console.log(ev.target.alt)
     ev.dataTransfer.setData("producto", ev.target.alt);
 }
+
 
 document.addEventListener("DOMContentLoaded", ()=>
 {
