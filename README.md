@@ -21,6 +21,7 @@ En este proyecto tendremos un contenido referente a un FrontEnd con:
     + ![](https://github.com/gonzalouli/PruebaTecnicaMaquetacion/blob/main/img/cssicon.png)index.css
     + ![](https://github.com/gonzalouli/PruebaTecnicaMaquetacion/blob/main/img/cssicon.png)Contacto.css
     + ![](https://github.com/gonzalouli/PruebaTecnicaMaquetacion/blob/main/img/cssicon.png)Carta.css
+  + ![](https://github.com/gonzalouli/PruebaTecnicaMaquetacion/blob/main/img/favicon-16x16.png)js/ (ficherosJS)
   + ![](https://github.com/gonzalouli/PruebaTecnicaMaquetacion/blob/main/img/favicon-16x16.png)img/ (imagenes usadas en el proyecto)
   + README
   + LICENSE
