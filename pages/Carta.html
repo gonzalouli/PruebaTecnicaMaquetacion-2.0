@@ -41,10 +41,24 @@
     </div>
 
 
-    <div class="btn-flotante compras">
+    <div class="ocultar" id="itemsSelected">
+      <table id="lista-carrito" class="u-full-width">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody id="en-carrito" >
+
+        </tbody>
+      </table>
+      <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
     </div>
-    <img class="btn-flotante" src="../img/cart.png"  ondrop="drop(event)" 
-    ondragover="allowDrop(event)"></img>
+    
+    <img class="btn-flotante" id="btncompras" src="../img/cart.png" ></img>
 
 
  

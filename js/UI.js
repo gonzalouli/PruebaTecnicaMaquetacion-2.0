@@ -47,16 +47,8 @@ class UI{
 }
 
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
 
-function drop(ev){
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("producto");
-    ev.target.appendChild(document.getElementById(data));
-    const carrito = document.querySelector()
-}
+
 
 function drag(ev){
     console.log("draggando")
@@ -68,6 +60,7 @@ function drag(ev){
 document.addEventListener("DOMContentLoaded", ()=>
 {
     const ui = new UI(); //carga de articulos
+
 
 
     const targetDrag = document.querySelectorAll('#plato')
@@ -91,7 +84,49 @@ document.addEventListener("DOMContentLoaded", ()=>
             listaPlatos.push(e.target.value)
         } )
     })
+
+    const carritodragover = document.querySelector('#btncompras')
+
+    carritodragover.addEventListener("drop", ev=>{ 
+        ev.preventDefault();
+        console.log(ev.target)
+        listaPlatos.push(ev.target.value)
+        const data = ev.dataTransfer.getData("producto");
+        ev.target.appendChild(document.getElementById(data));
+
+        const carrito = document.querySelector("#en-carrito")
+        const fila = document.createElement("tr");
+        
+        const infoImg = document.createElement("th")
+        const infoNombre = document.createElement("th")
+        const infoPrecio = document.createElement("th")
+        const infoCantidad = document.createElement("th")
+
+        
+        
+
+    })
+
+
+
+
  
+
+    const botoncarrito = document.querySelector('#btncompras')
+
+        botoncarrito.addEventListener('click', ()=>{
+        const tabla = document.querySelector('#itemsSelected')
+        if(tabla.classList.contains("ocultar")){
+            // tabla.style.display ="block"
+            tabla.classList.remove("ocultar")
+        }
+        else{
+            // tabla.style.display ="none"
+            tabla.classList.add("ocultar")
+
+        }
+    })
+
 
 })
 
