@@ -21,11 +21,7 @@ class UI{
             const form = document.querySelector('.carta');
             const grid = document.createElement('div');
             
-            //console.log(productos)
-            this.platosCarta = productos;
-            
             grid.classList.add('container')
-
 
             productos.forEach( (producto)=>
             {   
@@ -59,7 +55,15 @@ class UI{
                 const boton = document.createElement('button')
                 boton.classList.add('btn','btn-primary', 'mt-3', 'agregar')
                 boton.value = `${producto.id}`
+                boton.alt=JSON.stringify(obj)
                 boton.textContent ="Agregar al carrito"
+                boton.addEventListener('click', (ev)=>
+                {
+                    ev.preventDefault()
+                    const obj = JSON.parse(ev.target.alt)
+                    agregarPlato(obj)
+
+                })
     
                 cardbody.appendChild(image)
                 cardbody.appendChild(titulo)
@@ -130,19 +134,7 @@ document.addEventListener("DOMContentLoaded", ()=>
         const data = ev.dataTransfer.getData("img");
         // console.log(data,"aqui esta en string")
         const obj = JSON.parse(data)
-        let encontrado=false;
-        // console.log(obj)
-        listaPlatos.forEach( (item)=>{
-            if(item.id==obj.id){
-                item.cantidad+=1
-                encontrado=true;
-            }
-        })
-
-        if(!encontrado)
-            listaPlatos.push(obj)
-
-        putInList();
+        agregarPlato(obj)
 
     })
 
@@ -151,7 +143,6 @@ document.addEventListener("DOMContentLoaded", ()=>
         listaPlatos=[];
         putInList()
     })
-
 
  
 
@@ -172,6 +163,22 @@ document.addEventListener("DOMContentLoaded", ()=>
 
 
 })
+
+function agregarPlato(obj){
+    let encontrado=false;
+        // console.log(obj)
+        listaPlatos.forEach( (item)=>{
+            if(item.id==obj.id){
+                item.cantidad+=1
+                encontrado=true;
+            }
+        })
+
+        if(!encontrado)
+            listaPlatos.push(obj)
+
+        putInList();
+}
 
 function putInList(){
     limpiarList()
