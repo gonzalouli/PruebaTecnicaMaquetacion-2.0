@@ -1,6 +1,14 @@
  
 let listaPlatos =[]
 
+let obj = {
+    id:0,  
+    img:"",
+    nombre:"",
+    precio: "",
+    cantidad:0
+}
+
 class UI{
     constructor(){
         this.platosCarta = []
@@ -17,10 +25,16 @@ class UI{
             this.platosCarta = productos;
             
             grid.classList.add('container')
-            
+
 
             productos.forEach( (producto)=>
-            {
+            {   
+                obj.id = producto.id
+                obj.nombre=producto.nombre;
+                obj.img=producto.img;
+                obj.precio=producto.precio;
+                obj.cantidad = 1;
+
                 const card = document.createElement('div');
                 card.classList.add('card','plato', "mt-5",'mb-5')
                 const cardbody = document.createElement('div');
@@ -30,6 +44,7 @@ class UI{
                 image.setAttribute('src',`../img/platos/${producto.img}`)
                 image.setAttribute('alt',`${producto.id}`)
                 image.draggable=true;
+                image.alt=JSON.stringify(obj)
                 image.addEventListener('dragstart', drag )
                 const titulo = document.createElement('h4');
                 titulo.classList.add('card-title');
@@ -55,8 +70,9 @@ class UI{
                 
                 grid.appendChild(card)
 
-            })
+                obj=limpiarObj()
 
+            })
 
             
             form.appendChild(grid)
@@ -71,8 +87,8 @@ class UI{
 function drag(ev){
 
     console.log("draggando")
-    console.log(ev)
-    ev.dataTransfer.setData("img", ev.target.id);
+    console.log(ev.target.alt)
+    ev.dataTransfer.setData("img", ev.target.alt);
 }
 
 
@@ -104,28 +120,33 @@ document.addEventListener("DOMContentLoaded", ()=>
     })
 
     const carritodragover = document.querySelector('#btncompras')
+    carritodragover.addEventListener('dragover', (ev) =>{
+        ev.preventDefault();
+    } )
 
     carritodragover.addEventListener("drop", ev=>{ 
         ev.preventDefault();
         console.log(ev.target)
-        listaPlatos.push(ev.target.value)
-        const data = ev.dataTransfer.getData("producto");
-        ev.target.appendChild(document.getElementById(data));
+        const data = ev.dataTransfer.getData("img");
+        // console.log(data,"aqui esta en string")
+        const obj = JSON.parse(data)
+        // console.log(obj)
+        let index = listaPlatos.findIndex( (item)=>{item===obj})
+        console.log(index)
+        if(index===-1)
+            listaPlatos = [...listaPlatos, obj]
+        else
+            listaPlatos[index].cantidad++
 
-        const carrito = document.querySelector("#en-carrito")
-        const fila = document.createElement("tr");
-        
-        const infoImg = document.createElement("th")
-        const infoNombre = document.createElement("th")
-        const infoPrecio = document.createElement("th")
-        const infoCantidad = document.createElement("th")
-
-        
-        
+        putInList();
 
     })
 
-
+    const vaciarCarrito = document.querySelector('#vaciar-carrito')
+    vaciarCarrito.addEventListener('click', ()=>{
+        listaPlatos=[];
+        putInList()
+    })
 
 
  
@@ -148,8 +169,38 @@ document.addEventListener("DOMContentLoaded", ()=>
 
 })
 
+function putInList(){
+    limpiarList()
+    const enCarrito = document.querySelector('#en-carrito')
+    listaPlatos.forEach( obj =>{
+        const row = document.createElement("tr")
+
+        row.innerHTML = `
+        <th><img with=80 height=80 src="../img/platos/${obj.img}"></img></th>
+        <th>${obj.nombre}</th>
+        <th>${obj.precio}</th>
+        <th>${obj.cantidad}</th>
+        `
+        enCarrito.appendChild(row)
+        
+        }
+    )
+}
+
+function limpiarList(){
+    const enCarrito = document.querySelector('#en-carrito')
+    while(enCarrito.firstChild)
+        enCarrito.removeChild(enCarrito.firstChild)
+}
 
 
+function limpiarObj(){
+    return {
+        imagen:"",
+        nombre:"",
+        precio: ""
+    }
+}
 
 
 

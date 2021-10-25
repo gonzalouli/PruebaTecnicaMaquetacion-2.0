@@ -104,12 +104,21 @@ th{
 
 #itemsSelected{
 	position: fixed;
-    bottom: 16%;
-    left: 55%;
+    bottom: 22%;
+    padding: 3px;
+    width: auto;
+    height:auto;
+    right: 30px;
 }
 
-
-
+#vaciar-carrito{
+    color: white;
+    font-weight: bold,
+    
+}
+#cabecera{
+    text-align: center !important;
+}
 .ocultar{
     opacity:0;
   }
