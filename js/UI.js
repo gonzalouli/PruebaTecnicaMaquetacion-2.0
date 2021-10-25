@@ -126,17 +126,21 @@ document.addEventListener("DOMContentLoaded", ()=>
 
     carritodragover.addEventListener("drop", ev=>{ 
         ev.preventDefault();
-        console.log(ev.target)
+        //console.log(ev.target)
         const data = ev.dataTransfer.getData("img");
         // console.log(data,"aqui esta en string")
         const obj = JSON.parse(data)
+        let encontrado=false;
         // console.log(obj)
-        let index = listaPlatos.findIndex( (item)=>{item===obj})
-        console.log(index)
-        if(index===-1)
-            listaPlatos = [...listaPlatos, obj]
-        else
-            listaPlatos[index].cantidad++
+        listaPlatos.forEach( (item)=>{
+            if(item.id==obj.id){
+                item.cantidad+=1
+                encontrado=true;
+            }
+        })
+
+        if(!encontrado)
+            listaPlatos.push(obj)
 
         putInList();
 

@@ -100,15 +100,25 @@ th{
 #lista-carrito{
     text-align: center; 
     border-spacing: 100px;
+    
+}
+
+th{
+    color:white;
+
 }
 
 #itemsSelected{
 	position: fixed;
     bottom: 22%;
-    padding: 3px;
+    padding: 10px;
     width: auto;
     height:auto;
     right: 30px;
+    background-image: url("../img/pizarra.jpg");
+    background-size: cover;
+    background-repeat: repeat;
+    background-size: contain;
 }
 
 #vaciar-carrito{
