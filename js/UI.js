@@ -1,6 +1,6 @@
  
 let listaPlatos =[]
-
+let total=0;
 let obj = {
     id:0,  
     img:"",
@@ -173,6 +173,7 @@ function agregarPlato(obj){
 function putInList(){
     limpiarList()
     const enCarrito = document.querySelector('#en-carrito')
+    total=0;
     listaPlatos.forEach( obj =>{
         const row = document.createElement("tr")
         console.log(obj)
@@ -182,6 +183,7 @@ function putInList(){
         <th>${obj.precio}</th>
         <th>${obj.cantidad}</th>
         `
+        total+=obj.cantidad*obj.precio
         const del = document.createElement('button')
         del.classList.add('btn','btn-danger')
         del.value= obj.id
@@ -195,6 +197,8 @@ function putInList(){
         
         }
     )
+    const totalshow = document.querySelector('#total')
+    totalshow.innerHTML=`Total a pagar: ${total} euros`
 }
 
 function eliminarPlato(ev){
@@ -202,8 +206,9 @@ function eliminarPlato(ev){
     let newLista = [];
     listaPlatos.forEach(item=>{
         if(item.id==ev.target.value){
-            if(item.cantidad>0)
+            if(item.cantidad>0){
                 item.cantidad-=1;
+            }
         }
     })
     listaPlatos.forEach(item=>{

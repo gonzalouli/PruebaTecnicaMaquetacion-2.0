@@ -108,6 +108,7 @@ th{
         color:white;
         padding-right: 2% !important;
     }
+
     
 } 
 
@@ -151,3 +152,9 @@ th{
 .ocultar{
     opacity:0;
   }
+
+#total{
+    color:white;
+    font-weight: bolder;
+    padding-right: 2% !important;
+}
