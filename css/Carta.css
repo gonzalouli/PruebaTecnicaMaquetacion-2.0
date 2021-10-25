@@ -11,6 +11,10 @@
 
 }
 
+th{
+    padding-right: 7% !important;
+    padding-bottom: 10%;
+}
 
 .container{
     display: grid;
@@ -104,10 +108,7 @@
     left: 55%;
 }
 
-th{
-    padding-right: 7% !important;
-    padding-bottom: 10%;
-}
+
 
 .ocultar{
     opacity:0;

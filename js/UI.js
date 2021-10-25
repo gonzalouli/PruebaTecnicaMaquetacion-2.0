@@ -4,56 +4,75 @@ let listaPlatos =[]
 class UI{
     constructor(){
         this.platosCarta = []
-        fetch('https://raw.githubusercontent.com/gonzalouli/PruebaTecnicaMaquetacion/main/js/productos.json')
-        .then(response => response.json())
-        .then(data => this.mostrarArticulos(data))
-        
     }
 
-    
-    mostrarArticulos(productos){
-        const form = document.querySelector('.carta');
-        const grid = document.createElement('div');
-        
-        //console.log(this.productos)
-        this.platosCarta = productos;
-        console.log(this.platosCarta)
-        
-        grid.classList.add('container')
-        productos.forEach( (producto)=>
-        {
-            const card = document.createElement('div');
-            card.classList.add('card', "mt-5",'mb-5')
-            card.innerHTML =
-            `
-                <div class="card-body mx-auto">
-                    <img class="card-img-top producto" id="plato" alt="${producto.id}" draggable="true" src="../img/platos/${producto.img}"  >
-                    <h4 class="card-title">${producto.nombre}</h5>
-                    <lu>
-                        <li class="card-text" id="productos">${producto.descripcion}</li>
-                        <li class="card-text" id="contenido">${producto.contenido}</li>
-                        <li class="card-text" id="contenido">Precio: ${producto.precio} €</li>
-                    </lu>
-                    <button class="btn btn-primary mt-3" id="agregar" value="${producto.id}"> Agregar al carrito</button>
-                </div>
-            `
-            grid.appendChild(card)
+    crearCarta(){
+        fetch('https://raw.githubusercontent.com/gonzalouli/PruebaTecnicaMaquetacion/main/js/productos.json')
+        .then(response => response.json())
+        .then(productos => {
+            const form = document.querySelector('.carta');
+            const grid = document.createElement('div');
+            
+            //console.log(productos)
+            this.platosCarta = productos;
+            
+            grid.classList.add('container')
+            
 
+            productos.forEach( (producto)=>
+            {
+                const card = document.createElement('div');
+                card.classList.add('card','plato', "mt-5",'mb-5')
+                const cardbody = document.createElement('div');
+                cardbody.classList.add('card-body','mx-auto')
+                let image = document.createElement('img')
+                image.classList.add('producto','card-img-top')
+                image.setAttribute('src',`../img/platos/${producto.img}`)
+                image.setAttribute('alt',`${producto.id}`)
+                image.draggable=true;
+                image.addEventListener('dragstart', drag )
+                const titulo = document.createElement('h4');
+                titulo.classList.add('card-title');
+                titulo.textContent =`${producto.nombre}`
+                const params = document.createElement('lu')
+                params.innerHTML =
+                `
+                            <li class="card-text" id="${producto.nombre}-descr">${producto.descripcion}</li>
+                            <li class="card-text" id="${producto.nombre}-cont">${producto.contenido}</li>
+                            <li class="card-text" id="${producto.nombre}-precio">Precio: ${producto.precio} €</li>
+                `
+                const boton = document.createElement('button')
+                boton.classList.add('btn','btn-primary', 'mt-3', 'agregar')
+                boton.value = `${producto.id}`
+                boton.textContent ="Agregar al carrito"
+    
+                cardbody.appendChild(image)
+                cardbody.appendChild(titulo)
+                cardbody.appendChild(params)
+                cardbody.appendChild(boton)
+                card.appendChild(cardbody)
+
+                
+                grid.appendChild(card)
+
+            })
+
+
+            
+            form.appendChild(grid)
         })
-        
-        form.appendChild(grid)
+        .catch(error => console.error(error))
+
     }
 
 }
 
 
-
-
-
 function drag(ev){
+
     console.log("draggando")
-    console.log(ev.target.alt)
-    ev.dataTransfer.setData("producto", ev.target.alt);
+    console.log(ev)
+    ev.dataTransfer.setData("img", ev.target.id);
 }
 
 
@@ -61,19 +80,18 @@ document.addEventListener("DOMContentLoaded", ()=>
 {
     const ui = new UI(); //carga de articulos
 
+    ui.crearCarta()
 
+    // const targetDrag = document.querySelectorAll('.producto')
 
-    const targetDrag = document.querySelectorAll('#plato')
-    console.log(targetDrag)
-
-    targetDrag.forEach( target => {
-        console.log(target)
-        target.addEventListener("dragstart", (ev)=>{
-            ev.preventDefault();
-            console.log(ev.target.alt)
-            ev.dataTransfer.setData(`${target.alt}`, target.alt);
-        })
-    } )
+    // targetDrag.forEach( target => {
+    //     console.log(target)
+    //     target.addEventListener("dragstart", (ev)=>{
+    //         ev.preventDefault();
+    //         console.log(ev.target.alt)
+    //         ev.dataTransfer.setData(`${target.alt}`, target.alt);
+    //     })
+    // } )
 
     const botones = document.querySelectorAll('#agregar')
     
@@ -129,4 +147,49 @@ document.addEventListener("DOMContentLoaded", ()=>
 
 
 })
+
+
+
+
+
+
+
+
+
+// productos.forEach( (producto)=>
+//             {
+//                 const card = document.createElement('div');
+//                 card.classList.add('card','plato', "mt-5",'mb-5')
+//                 const cardbody = document.createElement('div');
+//                 cardbody.classList.add('card-body','mx-auto')
+//                 let image = document.createElement('img')
+//                 image.classList.add('producto','card-img-top')
+//                 image.setAttribute('src',`../img/platos/${producto.img}`)
+//                 image.setAttribute('alt',`${producto.id}`)
+//                 image.draggable=true;
+//                 const titulo = document.createElement('h4');
+//                 titulo.classList.add('card-title');
+//                 titulo.textContent =`${producto.nombre}`
+//                 const params = document.createElement('lu')
+//                 params.innerHTML =
+//                 `
+//                             <li class="card-text" id="${producto.nombre}-descr">${producto.descripcion}</li>
+//                             <li class="card-text" id="${producto.nombre}-cont">${producto.contenido}</li>
+//                             <li class="card-text" id="${producto.nombre}-precio">Precio: ${producto.precio} €</li>
+//                 `
+//                 const boton = document.createElement('button')
+//                 boton.classList.add('btn','btn-primary', 'mt-3', 'agregar')
+//                 boton.value = `${producto.id}`
+//                 boton.textContent ="Agregar al carrito"
+     
+//                 cardbody.appendChild(image)
+//                 cardbody.appendChild(titulo)
+//                 cardbody.appendChild(params)
+//                 cardbody.appendChild(boton)
+//                 card.appendChild(cardbody)
+
+                
+//                 grid.appendChild(card)
+
+//             })
 
