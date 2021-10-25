@@ -62,7 +62,6 @@ class UI{
                     ev.preventDefault()
                     const obj = JSON.parse(ev.target.alt)
                     agregarPlato(obj)
-
                 })
     
                 cardbody.appendChild(image)
@@ -113,15 +112,6 @@ document.addEventListener("DOMContentLoaded", ()=>
     //     })
     // } )
 
-    const botones = document.querySelectorAll('#agregar')
-    
-    botones.forEach( boton => {
-        boton.addEventListener("click", e =>
-        {
-            e.preventDefault();
-            listaPlatos.push(e.target.value)
-        } )
-    })
 
     const carritodragover = document.querySelector('#btncompras')
     carritodragover.addEventListener('dragover', (ev) =>{
@@ -149,14 +139,14 @@ document.addEventListener("DOMContentLoaded", ()=>
     const botoncarrito = document.querySelector('#btncompras')
 
         botoncarrito.addEventListener('click', ()=>{
-        const tabla = document.querySelector('#itemsSelected')
-        if(tabla.classList.contains("ocultar")){
-            // tabla.style.display ="block"
-            tabla.classList.remove("ocultar")
-        }
-        else{
-            // tabla.style.display ="none"
-            tabla.classList.add("ocultar")
+            const tabla = document.querySelector('#itemsSelected')
+            if(tabla.classList.contains("ocultar")){
+                // tabla.style.display ="block"
+                tabla.classList.remove("ocultar")
+            }
+            else{
+                // tabla.style.display ="none"
+                tabla.classList.add("ocultar")
 
         }
     })
@@ -185,18 +175,48 @@ function putInList(){
     const enCarrito = document.querySelector('#en-carrito')
     listaPlatos.forEach( obj =>{
         const row = document.createElement("tr")
-
+        console.log(obj)
         row.innerHTML = `
         <th><img with=80 height=80 src="../img/platos/${obj.img}"></img></th>
         <th>${obj.nombre}</th>
         <th>${obj.precio}</th>
         <th>${obj.cantidad}</th>
         `
+        const del = document.createElement('button')
+        del.classList.add('btn','btn-danger')
+        del.value= obj.id
+        del.innerHTML =`X`
+
+        del.addEventListener('click',eliminarPlato)
+
+        row.appendChild(del)
+
         enCarrito.appendChild(row)
         
         }
     )
 }
+
+function eliminarPlato(ev){
+    ev.preventDefault()
+    let newLista = [];
+    listaPlatos.forEach(item=>{
+        if(item.id==ev.target.value){
+            if(item.cantidad>0)
+                item.cantidad-=1;
+        }
+    })
+    listaPlatos.forEach(item=>{
+        if(item.cantidad>0){
+            newLista.push(item)
+        }
+    })
+    listaPlatos = newLista;
+    // console.log(listaPlatos)
+    putInList()
+}
+
+
 
 function limpiarList(){
     const enCarrito = document.querySelector('#en-carrito')
@@ -207,9 +227,11 @@ function limpiarList(){
 
 function limpiarObj(){
     return {
-        imagen:"",
+        id:0,  
+        img:"",
         nombre:"",
-        precio: ""
+        precio: "",
+        cantidad:0
     }
 }
 

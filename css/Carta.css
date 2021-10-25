@@ -69,7 +69,7 @@ th{
 	font-weight: bold; /* Fuente en negrita o bold */
 	border-radius: 5px; /* Borde del boton */
 	background-color: #cbe91e; /* Color de fondo */
-	padding: 2% 2%; /* Relleno del boton */
+	padding: 20px 20px; /* Relleno del boton */
 	position: fixed;
 	bottom: 5%;
 	right: 5%;
@@ -88,10 +88,30 @@ th{
 		bottom: 5%;
 		right: 5%;
 	}
+    #itemsSelected{
+        position: fixed !important;
+        bottom: 13%;
+        padding: 10px;
+        width: 80% !important;
+        height: auto !important;
+        right: 30px;
+        background-image: url("../img/pizarra.jpg");
+        background-size: cover;
+        background-repeat: repeat;
+        background-size: contain;
+    }
+    #cabecera{
+        font-size: 9px;
+        text-align: justify!important;
+    }
+    th{
+        color:white;
+        padding-right: 2% !important;
+    }
+    
 } 
 
 #itemsSelected{
-    background-color:rgba(5, 234, 255, 0.95);
     border-style: solid;
     width: 40%;
     transition: opacity .7s;
@@ -105,12 +125,11 @@ th{
 
 th{
     color:white;
-
 }
 
 #itemsSelected{
 	position: fixed;
-    bottom: 22%;
+    bottom: 13%;
     padding: 10px;
     width: auto;
     height:auto;
