@@ -37,6 +37,7 @@ Para codificar el proyecto usaremos la herramienta VSCode y para la modificacion
 Una vez finalizado el proyecto realizaremos un despliegue en la nube con Heroku.
 Para realizar la carga de la carta, hemos realizado una carga dinamica con un fetch del fichero JSON del mismo repositorio en productos.json.
 
-
+Para agregar un producto al carrito tendremos que pulsar su boton o arrastrar su imagen al icono del carrito. Para ver el carrito, tendremos que pulsar el icono del carrito.
+Podremos eliminar cuantos platos queramos, de uno en uno, y tanto el carrito como el precio total se iran actualizando en tiempo real.
 
 
